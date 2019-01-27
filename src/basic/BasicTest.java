@@ -5,8 +5,6 @@ package basic;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -136,6 +134,27 @@ public class BasicTest {
 		return a;
 	}
 
+	public static int findInsertPosInList(int value, List<Integer> list) {
+		if (list == null) {
+			return POSITION_NOT_FOUND;
+		}
+		if (list.isEmpty()) {
+			return 0;
+		}
+		int len = list.size();
+		int left = 0, right = len - 1;
+		int mid = (left + right) / 2;
+		while (left <= right) {
+			if (list.get(mid) < value) {
+				left = mid + 1;
+			} else {
+				right = mid - 1;
+			}
+			mid = (left + right) / 2;
+		}
+		return left;
+	}
+
 	/**
 	 * @param args the command line arguments
 	 */
@@ -143,12 +162,9 @@ public class BasicTest {
 //		List<Integer> intList = new ArrayList();
 //		intList.add(1);
 //		String a = intList.get(0);
-		List<String> stringList = Arrays.asList("1", "2", "3");
-		stringList.set(0, "5");
-		List<String> list = new ArrayList<>(Arrays.asList("1", "2", "3"));
-		list.add("1");
-		System.out.println("stringList " + stringList);
-		System.out.println("list " + list);
+		List<Integer> list = Arrays.asList(1, 3, 5, 7, 8);
+		int pos = findInsertPosInList(10, list);
+		System.out.println("pos " + pos);
 	}
 
 }

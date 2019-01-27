@@ -18,7 +18,7 @@ public class MaxHeapImpl implements IMaxHeap {
 	private static List<Integer> listIndex = new ArrayList<>();
 
 	@Override
-	public void add(Integer value) {
+	public void add(Integer value) {;
 		int i = 0;
 		listIndex.add(i);
 		int len = list.size();

@@ -44,6 +44,35 @@ public class MedianOf2SortedArr {
 		}
 	}
 
+	public static double findKthSmallestElement(int[] A, int[] B, int k) {
+		int lenA = A.length;
+		int lenB = B.length;
+		if (lenA + lenB < k) {
+			return -1;
+		}
+		int iMin = 0;
+		int iMax = Integer.min(A.length, k - 1);
+
+		int i;
+		int j;
+
+		while (iMin <= iMax) {
+			i = (iMin + iMax) / 2;
+			j = k - 1 - i; // because of zero based index
+			if (j > 0 && B[j - 1] > A[i]) {
+				// i is too small, must increase it
+				iMin = i + 1;
+			} else if (i > 0 && A[i - 1] > B[j]) {
+				// i is too big, must decrease it
+				iMax = i - 1;
+			} else {
+				// i is perfect
+				return Integer.min(A[i], B[j]);
+			}
+		}
+		return -1;
+	}
+
 	public double median(int[] A, int[] B) {
 		int total = A.length + B.length;
 		if (total % 2 == 1) {
@@ -55,15 +84,9 @@ public class MedianOf2SortedArr {
 
 	}
 
+	
 	public static void main(String[] args) {
-//		int[] A = {1, 2};
-//		int[] B = {1, 2, 3};
-//		System.out.println(new MedianOf2SortedArr().median(A, B));
-		int[] arr2 = new int[]{1, 12, 15, 26, 38};
-//		int[] arr2 = new int[]{2, 13, 17, 30, 45};
-		int[] arr1 = new int[]{37, 38, 39, 40, 45};
-		int k = kThElement(arr1, arr2, 0, arr1.length - 1, 0, arr2.length - 1, 7);
-		System.out.println("K: " + k);
+		
 	}
 
 }
