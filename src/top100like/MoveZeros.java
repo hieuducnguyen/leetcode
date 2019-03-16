@@ -5,6 +5,8 @@
  */
 package top100like;
 
+import basic.BasicTest;
+
 /**
  *
  * @author HieuDucNguyen
@@ -12,17 +14,29 @@ package top100like;
 public class MoveZeros {
 
     public static void process(int[] arr) {
-        int end = arr.length - 1;
+        int end = arr.length;
+        int i = 0;
+        while (i < end) {
+            if (arr[i] == 0) {
+                move(arr, i);
+                end--;
+            } else {
+                i++;
+            }
+        }
     }
 
     public static void move(int[] arr, int pos) {
         for (int i = pos; i < arr.length - 1; i++) {
-            arr[pos] = arr[pos + 1];
+            arr[i] = arr[i + 1];
+
         }
         arr[arr.length - 1] = 0;
     }
 
     public static void main(String[] args) {
         int[] arr = new int[]{0, 1, 0, 3, 12};
+        process(arr);
+        BasicTest.printArrayInt(arr);
     }
 }
