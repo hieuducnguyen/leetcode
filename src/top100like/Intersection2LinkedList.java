@@ -71,8 +71,8 @@ public class Intersection2LinkedList {
 		}
 		ListNode tmpB = headB;
 		while (tmpB != null) {
-			if(set.contains(tmpB)){
-				
+			if (set.contains(tmpB)) {
+
 			}
 		}
 	}
