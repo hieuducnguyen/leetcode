@@ -60,6 +60,7 @@ public class ReverseLinkedList {
         while (list != null) {
             System.out.println("val: " + list.val);
             list = list.next;
+			
         }
     }
 }
