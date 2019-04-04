@@ -14,25 +14,53 @@ import java.util.List;
 public class Permutation {
 
 	// note dùng queue hay vì list of list, dk dừng là queue đó có size bằng 7 (arr.length)
-	public static List<ArrayList<Integer>> lists = new ArrayList<ArrayList<Integer>>();
+	public static List<List<Integer>> lists = new ArrayList<>();
 
-	private static int process(int[] arr) {
-		for (int i = 0; i < arr.length; i++) {
+	private static List<List<Integer>> process(int[] arr) {
+		int len = arr.length;
+		while (lists.isEmpty() || lists.get(0).size() < len) {
 			if (lists.isEmpty()) {
-				ArrayList<Integer> list = new ArrayList<>();
-				list.add(arr[i]);
-				lists.add(list);
+				for (int i = 0; i < arr.length; i++) {
+					List<Integer> list = new ArrayList<>();
+					list.add(arr[i]);
+					lists.add(list);
+				}
 			} else {
-				for (int j = 0; j < lists.size(); j++) {
-
+				for (List<Integer> list : lists) {
+					for (int i = 0; i < arr.length; i++) {
+						if (!list.contains(arr[i])) {
+							List<Integer> newList = new ArrayList<Integer>(list);
+							newList.add(arr[i]);
+							lists.add(newList);
+						}
+					}
+					lists.remove(list);
 				}
 			}
 		}
-		return 0;
+		return lists;
 	}
 
 	public static void main(String[] args) {
-		int[] arr = new int[]{1, 2, 3, 4, 5, 6, 7};
-		int num = process(arr);
+//		int[] arr = new int[]{1, 2};
+//		List<List<Integer>> listOfList = process(arr);
+//		for (int i = 0; i < listOfList.size(); i++) {
+//			System.out.println("list: " + listOfList.get(i));
+//		}
+		List<Integer> list = new ArrayList<>();
+		list.add(1);
+		list.add(2);
+		list.add(3);
+		list.add(4);
+		for (int i = 0; i < list.size(); i++) {
+			if (list.get(i) % 2 == 0) {
+				list.remove(i);
+			} else if (list.get(i) % 3 == 0) {
+				list.add(i + 4);
+			} else if (list.get(i) % 4 == 0) {
+				list.add(i + 4);
+			}
+			System.out.println("list: " + list);
+		}
 	}
 }
