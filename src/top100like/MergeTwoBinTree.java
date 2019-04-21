@@ -5,6 +5,7 @@
  */
 package top100like;
 
+import basic.TreeTest;
 import basic.TreeTest.TreeNode;
 import java.util.LinkedList;
 import java.util.Queue;
@@ -77,5 +78,7 @@ public class MergeTwoBinTree {
         t22.right = t52;
         t32.right = t72;
         TreeNode node = process(t11, t12);
+        String tree = TreeTest.printTree(node);
+        System.out.println("tree: " + tree);
     }
 }
