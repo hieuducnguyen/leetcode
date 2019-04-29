@@ -155,16 +155,32 @@ public class BasicTest {
 		return left;
 	}
 
+	public static class ListNode {
+
+		public int val;
+		public ListNode next;
+
+		public ListNode(int x) {
+			val = x;
+		}
+	}
+
+	public static void printListNode(ListNode list) {
+		System.out.print("list: ");
+		while (list != null) {
+			System.out.print(list.val + ", ");
+			list = list.next;
+		}
+	}
+
 	/**
 	 * @param args the command line arguments
 	 */
 	public static void main(String[] args) {
-//		List<Integer> intList = new ArrayList();
-//		intList.add(1);
-//		String a = intList.get(0);
-		List<Integer> list = Arrays.asList(1, 3, 5, 7, 8);
-		int pos = findInsertPosInList(10, list);
-		System.out.println("pos " + pos);
+		ListNode a = new ListNode(10);
+		ListNode b = new ListNode(9);
+		a.next = b;
+		printListNode(a);
 	}
 
 }
