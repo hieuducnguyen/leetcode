@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package top100like;
+package top100like.easy;
 
 import basic.BasicTest;
 import java.util.HashMap;

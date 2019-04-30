@@ -2,7 +2,7 @@
  *  Copyright (c) 2012-2018 by Zalo Group.
  *  All Rights Reserved.
  */
-package top100like;
+package top100like.easy;
 
 import java.util.LinkedList;
 import java.util.Queue;
