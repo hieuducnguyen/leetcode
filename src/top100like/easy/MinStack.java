@@ -77,6 +77,6 @@ public class MinStack {
 		minStack.pop();
 		minStack.top();
 		int min1 = minStack.getMin();
-		System.out.println("min1: " + min1);
+		System.out.println("min1:	 " + min1);
 	}
 }

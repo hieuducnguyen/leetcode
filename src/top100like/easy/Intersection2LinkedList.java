@@ -24,6 +24,9 @@ public class Intersection2LinkedList {
 		}
 	}
 
+	public static ListNode headOfA;
+	public static ListNode headOfB;
+
 	public static ListNode process(ListNode headA, ListNode headB) {
 		ListNode tmpA = headA, tmpB;
 		while (tmpA != null) {
@@ -80,7 +83,70 @@ public class Intersection2LinkedList {
 	}
 
 	public static ListNode process4(ListNode headA, ListNode headB) {
+		int lenA = len(headA);
+		int lenB = len(headB);
+		int diff = lenA - lenB;
+		if (diff > 0) {
+			for (int i = 0; i < diff; i++) {
+				headA = headA.next;
+			}
+		} else {
+			diff = -diff;
+			for (int i = 0; i < diff; i++) {
+				headB = headB.next;
+			}
+		}
+		while (headA != null && headB != null) {
+			if (headA == headB) {
+				return headA;
+			}
+			headA = headA.next;
+			headB = headB.next;
+		}
 		return null;
+	}
+
+	public static int len(ListNode node) {
+		int len = 0;
+		while (node != null) {
+			++len;
+			node = node.next;
+		}
+		return len;
+	}
+
+	public static ListNode process5(ListNode headA, ListNode headB) {
+		headOfA = headA;
+		headOfB = headB;
+		boolean switchA = false, switchB = false;
+		while (headA != null && headB != null) {
+			if (headA == headB) {
+				return headA;
+			}
+			if (headA.next != null || switchA) {
+				headA = headA.next;
+			} else {
+				switchA = true;
+				headA = headOfB;
+			}
+			if (headB.next != null || switchB) {
+				headB = headB.next;
+			} else {
+				switchB = true;
+				headB = headOfA;
+			}
+		}
+		return null;
+	}
+
+	public static ListNode process6(ListNode nodeA, ListNode nodeB) {
+		ListNode headA = nodeA;
+		ListNode headB = nodeB;
+		while (nodeA != nodeB) {
+			nodeA = nodeA.next != null ? nodeA.next : headB;
+			nodeB = nodeB.next != null ? nodeB.next : headA;
+		}
+		return nodeA;
 	}
 
 	public static void main(String[] args) {
@@ -99,7 +165,7 @@ public class Intersection2LinkedList {
 		k.next = c;
 		c.next = d;
 		d.next = e;
-		ListNode ret = process2(b, g);
+		ListNode ret = process6(a, g);
 		System.out.println("ret: " + ret.val);
 	}
 

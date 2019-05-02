@@ -13,19 +13,29 @@ import java.util.HashSet;
  */
 public class SingleNumber {
 
-    public static int process(int[] arr) {
-        HashSet<Integer> set = new HashSet<>();
-        for (int i = 0; i < arr.length; i++) {
-            if (set.contains(arr[i])) {
-                set.remove(arr[i]);
-            } else {
-                set.add(arr[i]);
-            }
-        }
-        return set.iterator().next();
-    }
+	public static int process(int[] arr) {
+		HashSet<Integer> set = new HashSet<>();
+		for (int i = 0; i < arr.length; i++) {
+			if (set.contains(arr[i])) {
+				set.remove(arr[i]);
+			} else {
+				set.add(arr[i]);
+			}
+		}
+		return set.iterator().next();
+	}
 
-    public static void main(String[] args) {
+	public static void main(String[] args) {
+		int[] arr = new int[]{4, 1, 2, 1, 2};
+		int singleNum = process1(arr);
+		System.out.println("single number: " + singleNum);
+	}
 
-    }
+	private static int process1(int[] arr) {
+		int result = 0;
+		for (int i = 0; i < arr.length; i++) {
+			result ^= arr[i];
+		}
+		return result;
+	}
 }
