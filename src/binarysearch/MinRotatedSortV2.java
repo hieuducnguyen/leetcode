@@ -13,7 +13,7 @@ import static basic.BasicTest.POSITION_NOT_FOUND;
  */
 public class MinRotatedSortV2 {
 
-	public static int process(int[] arr) {
+	private static int process(int[] arr) {
 		if (arr == null || arr.length == 0) {
 			return POSITION_NOT_FOUND;
 		}

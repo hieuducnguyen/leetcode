@@ -13,7 +13,7 @@ import java.util.HashSet;
  */
 public class SingleNumber {
 
-	public static int process(int[] arr) {
+	private static int process(int[] arr) {
 		HashSet<Integer> set = new HashSet<>();
 		for (int i = 0; i < arr.length; i++) {
 			if (set.contains(arr[i])) {

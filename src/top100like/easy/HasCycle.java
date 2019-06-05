@@ -14,7 +14,7 @@ import java.util.HashSet;
  */
 public class HasCycle {
 
-	public static boolean process(ListNode node) {
+	private static boolean process(ListNode node) {
 		HashSet<ListNode> set = new HashSet<>();
 		while (node != null) {
 			if (set.contains(node)) {

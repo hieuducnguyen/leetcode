@@ -13,7 +13,7 @@ import basic.BasicTest;
  */
 public class MoveZeros {
 
-	public static void process(int[] arr) {
+	private static void process(int[] arr) {
 		int end = arr.length;
 		int i = 0;
 		while (i < end) {
@@ -26,14 +26,14 @@ public class MoveZeros {
 		}
 	}
 
-	public static void move(int[] arr, int pos) {
+	private static void move(int[] arr, int pos) {
 		for (int i = pos; i < arr.length - 1; i++) {
 			arr[i] = arr[i + 1];
 		}
 		arr[arr.length - 1] = 0;
 	}
 
-	public static void move2(int[] arr, int pos, int end, int numMove) {
+	private static void move2(int[] arr, int pos, int end, int numMove) {
 		final int left = Math.min(arr.length - numMove, end);
 		for (int i = pos; i < left; i++) {
 			arr[i] = arr[i + numMove];
@@ -64,7 +64,7 @@ public class MoveZeros {
 		}
 	}
 
-	public static void process3(int[] arr) {
+	private static void process3(int[] arr) {
 		int counter = 0;
 		for (int i = 0; i < arr.length; i++) {
 			if (arr[i] != 0) {

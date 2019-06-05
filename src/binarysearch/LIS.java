@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class LIS {
 
-    public static int process(int[] array) {
+    private static int process(int[] array) {
         if (array == null || array.length == 0) {
             return 0;
         }
@@ -51,7 +51,7 @@ public class LIS {
         return longest;
     }
 
-    public static int process2(int[] array) {
+    private static int process2(int[] array) {
         int[] dp = new int[array.length];
         int len = 0;
         for (int num : array) {

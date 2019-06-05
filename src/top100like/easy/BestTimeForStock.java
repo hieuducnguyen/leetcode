@@ -11,7 +11,7 @@ package top100like.easy;
  */
 public class BestTimeForStock {
 
-	public static int processs(int[] array) {
+	private static int processs(int[] array) {
 		if (array == null || array.length == 0 || array.length == 1) {
 			return 0;
 		}
@@ -26,7 +26,7 @@ public class BestTimeForStock {
 		return maxProfit;
 	}
 
-	public static int process2(int[] array) {
+	private static int process2(int[] array) {
 		if (array == null || array.length == 0 || array.length == 1) {
 			return 0;
 		}

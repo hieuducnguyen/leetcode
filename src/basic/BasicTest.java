@@ -163,6 +163,12 @@ public class BasicTest {
 		public ListNode(int x) {
 			val = x;
 		}
+
+		@Override
+		public String toString() {
+			return String.format("value=%s", val);
+		}
+
 	}
 
 	public static void printListNode(ListNode list) {

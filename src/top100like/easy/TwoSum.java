@@ -15,7 +15,7 @@ import java.util.Map;
  */
 public class TwoSum {
 
-    public static int[] process(int[] arr, int target) {
+    private static int[] process(int[] arr, int target) {
         for (int i = 0; i < arr.length; i++) {
             int findingNum = target - arr[i];
             for (int j = (i + 1); j < arr.length; j++) {
@@ -27,7 +27,7 @@ public class TwoSum {
         return null;
     }
 
-    public static int[] process2(int[] arr, int target) {
+    private static int[] process2(int[] arr, int target) {
         Map<Integer, Integer> map = new HashMap<>();
         for (int i = 0; i < arr.length; i++) {
             int findingNum = target - arr[i];
@@ -40,7 +40,7 @@ public class TwoSum {
         return null;
     }
 
-    public static int[] process3(int[] arr, int target) {
+    private static int[] process3(int[] arr, int target) {
         Map<Integer, Integer> map = new HashMap<>();
         for (int i = 0; i < arr.length; i++) {
             if (map.containsKey(target - arr[i])) {

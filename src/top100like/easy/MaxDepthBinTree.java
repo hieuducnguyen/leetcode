@@ -22,7 +22,7 @@ public class MaxDepthBinTree {
         }
     }
 
-    public static int process(TreeNode node) {
+    private static int process(TreeNode node) {
         if (node == null) {
             return 0;
         }

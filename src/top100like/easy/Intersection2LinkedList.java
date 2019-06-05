@@ -11,9 +11,9 @@ import java.util.Set;
  *
  * @author hieund3
  */
-public class Intersection2LinkedList {
+class Intersection2LinkedList {
 
-	public static class ListNode {
+	private static class ListNode {
 
 		int val;
 		ListNode next;
@@ -27,7 +27,7 @@ public class Intersection2LinkedList {
 	public static ListNode headOfA;
 	public static ListNode headOfB;
 
-	public static ListNode process(ListNode headA, ListNode headB) {
+	private static ListNode process(ListNode headA, ListNode headB) {
 		ListNode tmpA = headA, tmpB;
 		while (tmpA != null) {
 			tmpB = headB;
