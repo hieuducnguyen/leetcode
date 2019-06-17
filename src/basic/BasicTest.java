@@ -6,7 +6,6 @@ package basic;
  * and open the template in the editor.
  */
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -22,6 +21,7 @@ public class BasicTest {
 		for (int i = 0; i < a.length; i++) {
 			System.out.print(i + ":" + a[i] + " | ");
 		}
+		System.out.println();
 	}
 
 	public static int maxValArr(int[] a) {
@@ -116,7 +116,7 @@ public class BasicTest {
 		if (array == null) {
 			return null;
 		}
-		List<Integer> resultList = new ArrayList<Integer>();
+		List<Integer> resultList = new ArrayList<>();
 		for (int i = 0; i < array.length; i++) {
 			resultList.add(array[i]);
 		}
@@ -179,14 +179,19 @@ public class BasicTest {
 		}
 	}
 
+	public static void printMatrix(int[][] matrix) {
+		int m = matrix.length;
+		for (int i = 0; i < m; i++) {
+			printArrayInt(matrix[i]);
+		}
+	}
+
 	/**
 	 * @param args the command line arguments
 	 */
 	public static void main(String[] args) {
-		ListNode a = new ListNode(10);
-		ListNode b = new ListNode(9);
-		a.next = b;
-		printListNode(a);
+		int[][] matrix = new int[][]{{1, 2, 3}, {4, 5, 6}};
+		printMatrix(matrix);
 	}
 
 }

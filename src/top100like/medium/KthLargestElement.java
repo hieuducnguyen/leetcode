@@ -12,7 +12,7 @@ package top100like.medium;
 public class KthLargestElement {
 
 	public static void main(String[] args) {
-		int[] nums = new int[]{3, 2, 1, 5, 6, 4};
+		int[] nums = new int[]{3, 2, 3};
 		int k = 2;
 		int ret = process(nums, k);
 		System.out.println("k: " + ret);//5
@@ -23,14 +23,13 @@ public class KthLargestElement {
 	}
 
 	private static int quicksearch(int[] nums, int start, int end, int k) {
-		if (k == 1 && start + 1 == end) {
-			return nums[start];
-		}
 		int pos = partition(nums, start, end);
-		if (end - pos > k) {
-			return quicksearch(nums, start, k, end - pos - k);
+		if (end - pos == k) {
+			return nums[pos];
+		} else if (end - pos > k) {
+			return quicksearch(nums, pos + 1, end, k);
 		} else {
-			return quicksearch(nums, k, end, k - pos + start);
+			return quicksearch(nums, start, pos, k - (end - pos));
 		}
 	}
 
