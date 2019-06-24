@@ -10,7 +10,7 @@ package binarysearch;
  */
 public class SearchInsertPosition {
 
-	public static int process(int[] arr, int value) {
+	private static int process(int[] arr, int value) {
 		if (arr == null || arr.length == 1) {
 			return 0;
 		}

@@ -15,8 +15,8 @@ import java.util.Map;
 public class BestTimeBuySellStockWithCountDown {
 
 	public static void main(String[] args) {
-		int[] nums = new int[]{1, 4, 2};
-		int profix = process(nums);
+		int[] nums = new int[]{1, 2, 3, 0, 2};
+		int profix = process2(nums);
 		System.out.println("profix: " + profix);
 	}
 
@@ -39,5 +39,38 @@ public class BestTimeBuySellStockWithCountDown {
 			map.put(i, Math.max(tempMax, map.get(i - 1)));
 		}
 		return map.get(nums.length - 1);
+	}
+
+	private static int process1(int[] prices) {
+		int sell = 0, prev_sell = 0, buy = Integer.MIN_VALUE, prev_buy;
+		for (int price : prices) {
+			prev_buy = buy;
+			buy = Math.max(prev_sell - price, prev_buy);
+			prev_sell = sell;
+			sell = Math.max(prev_buy + price, prev_sell);
+		}
+		return sell;
+	}
+
+	private static int process2(int[] prices) {
+		int preBuy = Integer.MIN_VALUE, preSell = 0, preRest = 0, buy = 0, sell = 0, rest = 0;
+		for (int i = 0; i < prices.length; i++) {
+			int tempPrice = prices[i];
+			buy = max(preBuy, preRest - tempPrice, preSell - tempPrice);
+			sell = max(preSell, preBuy + tempPrice, preRest + tempPrice);
+			rest = max(preBuy, preRest, preSell);
+			preBuy = buy;
+			preRest = rest;
+			preSell = sell;
+		}
+		return sell;
+	}
+
+	private static int max(int num1, int num2, int num3) {
+		if (num1 > num2) {
+			return Math.max(num1, num3);
+		} else {
+			return Math.max(num2, num3);
+		}
 	}
 }

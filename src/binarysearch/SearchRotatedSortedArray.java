@@ -42,7 +42,7 @@ public class SearchRotatedSortedArray {
 		return -1;
 	}
 
-	public static int process(int[] arr, int value) {
+	private static int process(int[] arr, int value) {
 		if (arr == null || arr.length == 0) {
 			return POSITION_NOT_FOUND;
 		}

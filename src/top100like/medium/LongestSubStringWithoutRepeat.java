@@ -7,9 +7,7 @@ package top100like.medium;
 
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.LinkedList;
 import java.util.Map;
-import java.util.Queue;
 import java.util.Set;
 
 /**
@@ -19,7 +17,7 @@ import java.util.Set;
 public class LongestSubStringWithoutRepeat {
 
 	public static void main(String[] args) {
-		String text = "abba";
+		String text = "pwwkew";
 		int lenght = process3(text);
 		System.out.println("len: " + lenght);
 	}
@@ -94,7 +92,22 @@ public class LongestSubStringWithoutRepeat {
 	}
 
 	private static int process3(String text) {
-		System.out.println('z' - 'A');
-		return 0;
+		if (text == null || text.isEmpty()) {
+			return 0;
+		}
+		if (text.length() == 1) {
+			return 1;
+		}
+		int[] arr = new int[100];
+		int j = 0;
+		int max = 0;
+		for (int i = 0; i < text.length(); i++) {
+			if (arr[text.charAt(i) - ' '] != 0) {
+				j = Math.max(j, arr[text.charAt(i) - ' ']);
+			}
+			max = max > (i - j + 1) ? max : (i - j + 1);
+			arr[text.charAt(i) - ' '] = i + 1;
+		}
+		return max;
 	}
 }

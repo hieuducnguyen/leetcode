@@ -12,7 +12,7 @@ import static basic.BasicTest.POSITION_NOT_FOUND;
  */
 public class SearchRotatedSortedArrayV2 {
 
-	public static int process(int[] arr, int value) {
+	private static int process(int[] arr, int value) {
 		if (arr == null || arr.length == 0) {
 			return POSITION_NOT_FOUND;
 		}
