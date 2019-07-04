@@ -5,8 +5,11 @@
  */
 package top100like.medium;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  *
@@ -17,30 +20,48 @@ public class WordBreak {
 	public static void main(String[] args) {
 		String s = "applepenapple";
 		List<String> list = Arrays.asList("apple", "pen");
-		boolean result = process(s, list);
+		boolean result = process1(s, list);
 		System.out.println("result " + result);
 	}
 
 	private static boolean process(String s, List<String> list) {
-		StringBuilder sb = new StringBuilder();
-		return check(sb, s, list);
+		List<String> resultList = new ArrayList<>();
+		return check(resultList, s, list);
 	}
 
-	private static boolean check(StringBuilder sb, String s, List<String> list) {
-		if (sb.toString().equals(s)) {
+	private static boolean check(List<String> resultList, String s, List<String> list) {
+		if (String.join("", resultList).equals(s)) {
 			return true;
 		}
-		if (!s.contains(sb.toString())) {
-			return false;
-		}
 		for (int i = 0; i < list.size(); i++) {
-			int pos = sb.length();
-			sb.append(list.get(i));
-			if (check(sb, s, list)) {
+			resultList.add(list.get(i));
+			if (s.contains(String.join("", resultList)) && check(resultList, s, list)) {
 				return true;
 			}
-			sb.delete(pos, sb.length());
+			resultList.remove(resultList.size() - 1);
 		}
 		return false;
+	}
+
+	private static boolean process1(String s, List<String> list) {
+		if (list == null || list.isEmpty()) {
+			return s == null || s.isEmpty();
+		}
+		Set<Integer> set = new HashSet<>();
+		set.add(0);
+		for (int i = 0; i < s.length(); i++) {
+			if (!set.contains(i)) {
+				continue;
+			}
+			if (set.contains(s.length())) {
+				break;
+			}
+			for (String item : list) {
+				if ((i + item.length() <= s.length()) && s.substring(i, i + item.length()).equals(item)) {
+					set.add(item.length() + i);
+				}
+			}
+		}
+		return set.contains(s.length());
 	}
 }

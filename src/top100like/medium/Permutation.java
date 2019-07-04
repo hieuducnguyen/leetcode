@@ -42,7 +42,10 @@ public class Permutation {
 	}
 
 	public static void main(String[] args) {
-		int[] arr = new int[]{1, 2, 3, 4, 5, 6};
+		int[] arr = new int[100];
+		for (int i = 1; i <= 100; i++) {
+			arr[i - 1] = i;
+		}
 		List<List<Integer>> list = process(arr);
 		list.forEach((line) -> {
 			System.out.println(line);

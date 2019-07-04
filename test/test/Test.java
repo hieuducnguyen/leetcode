@@ -5,15 +5,18 @@
  */
 package test;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  *
  * @author hieund3
  */
 public class Test {
-
+	
 	public static void main(String[] args) {
+		Map<Integer, Integer> map = new HashMap<>();
+		map.put(1, Integer.MIN_VALUE);
+		System.out.println(map.getOrDefault(2, Integer.MAX_VALUE));
 	}
 }
