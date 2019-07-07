@@ -46,7 +46,7 @@ public class SymmetricTree {
 		return (left.val == right.val) && recurSymmetric(left.left, right.right) && recurSymmetric(left.right, right.left);
 	}
 
-	public static class TreeNode {
+	private static class TreeNode {
 
 		int val;
 		TreeNode left;

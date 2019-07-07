@@ -55,6 +55,6 @@ public class TwoSum {
     public static void main(String[] args) {
         int[] arr = new int[]{-10,-1,-18,-19};
         int[] ret = process3(arr, -19);
-        BasicTest.printArrayInt(ret);
+        BasicTest.printArray(ret);
     }
 }

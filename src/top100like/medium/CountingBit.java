@@ -14,7 +14,7 @@ public class CountingBit {
 	public static void main(String[] args) {
 		int num = 4;
 		int[] arr = process1(num);
-		basic.BasicTest.printArrayInt(arr);
+		basic.BasicTest.printArray(arr);
 	}
 
 	private static int[] process(int num) {

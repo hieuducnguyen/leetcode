@@ -11,26 +11,26 @@ package top100like.easy;
  */
 public class MaxDepthBinTree {
 
-    public static class TreeNode {
+	private static class TreeNode {
 
-        int val;
-        TreeNode left;
-        TreeNode right;
+		int val;
+		TreeNode left;
+		TreeNode right;
 
-        TreeNode(int x) {
-            val = x;
-        }
-    }
+		TreeNode(int x) {
+			val = x;
+		}
+	}
 
-    private static int process(TreeNode node) {
-        if (node == null) {
-            return 0;
-        }
-        return (Math.max(process(node.left), process(node.right)) + 1);
+	private static int process(TreeNode node) {
+		if (node == null) {
+			return 0;
+		}
+		return (Math.max(process(node.left), process(node.right)) + 1);
 
-    }
+	}
 
-    public static void main(String[] args) {
+	public static void main(String[] args) {
 
-    }
+	}
 }

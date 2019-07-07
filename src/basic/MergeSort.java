@@ -15,7 +15,7 @@ public class MergeSort {
 		int[] nums = new int[]{9, 7, 3, 2, 6, 8, 1};
 //		int[] nums = new int[]{9, 1};
 		process(nums);
-		BasicTest.printArrayInt(nums);
+		BasicTest.printArray(nums);
 	}
 
 	private static void process(int[] nums) {

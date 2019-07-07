@@ -33,7 +33,7 @@ public class GenBinarySequence {
 				arr[j] = 0;
 			}
 		}
-		basic.BasicTest.printArrayInt(arr);
+		basic.BasicTest.printArray(arr);
 	}
 
 	private static List<String> process(int n) {

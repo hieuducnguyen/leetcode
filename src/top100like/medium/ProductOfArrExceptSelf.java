@@ -16,7 +16,7 @@ public class ProductOfArrExceptSelf {
 	public static void main(String[] args) {
 		int[] num = new int[]{1, 2, 4, 4, 1};
 		int[] result = process(num);
-		basic.BasicTest.printArrayInt(result);
+		basic.BasicTest.printArray(result);
 	}
 
 	private static int[] process(int[] num) {

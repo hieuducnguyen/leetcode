@@ -17,7 +17,14 @@ public class BasicTest {
 	public static BasicTest INSTANCE = new BasicTest();
 	public static final int POSITION_NOT_FOUND = -1;
 
-	public static void printArrayInt(int[] a) {
+	public static void printArray(int[] a) {
+		for (int i = 0; i < a.length; i++) {
+			System.out.print(i + ":" + a[i] + " | ");
+		}
+		System.out.println();
+	}
+
+	public static void printArray(double[] a) {
 		for (int i = 0; i < a.length; i++) {
 			System.out.print(i + ":" + a[i] + " | ");
 		}
@@ -182,7 +189,7 @@ public class BasicTest {
 	public static void printMatrix(int[][] matrix) {
 		int m = matrix.length;
 		for (int i = 0; i < m; i++) {
-			printArrayInt(matrix[i]);
+			printArray(matrix[i]);
 		}
 	}
 

@@ -79,7 +79,7 @@ public class MoveZeros {
 	public static void main(String[] args) {
 		int[] arr = new int[]{0, 1, 2, 0, 5, 0, 6};
 		process3(arr);
-		BasicTest.printArrayInt(arr);
+		BasicTest.printArray(arr);
 	}
 
 }

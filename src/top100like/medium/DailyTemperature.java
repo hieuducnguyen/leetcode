@@ -17,7 +17,7 @@ public class DailyTemperature {
 	public static void main(String[] args) {
 		int[] t = new int[]{73, 74, 75, 71, 69, 72, 76, 73};
 		int[] result = process(t);
-		basic.BasicTest.printArrayInt(result);
+		basic.BasicTest.printArray(result);
 	}
 
 	private static int[] process(int[] t) {
