@@ -40,6 +40,22 @@ public class BestTimeForStock {
 		return maxProfit;
 	}
 
+	private static int maxProfix(int[] prices) {
+		if (prices == null || prices.length == 0 || prices.length == 1) {
+			return 0;
+		}
+		int tmpMax = prices[prices.length - 1];
+		int profit = 0;
+		for (int i = prices.length - 2; i >= 0; i--) {
+			if (prices[i] < tmpMax) {
+				profit = Math.max(profit, tmpMax - prices[i]);
+			} else {
+				tmpMax = prices[i];
+			}
+		}
+		return profit;
+	}
+
 	public static void main(String[] args) {
 		int[] a = new int[]{7, 6, 4, 8, 1};
 		int maxProfit = process2(a);

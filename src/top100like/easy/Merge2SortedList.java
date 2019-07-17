@@ -19,7 +19,7 @@ public class Merge2SortedList {
 
 		ListNode l3 = new ListNode(29);
 		l2.next = l3;
-		ListNode l = process1(l1, l2);
+		ListNode l = mergeTwoLists(l1, l2);
 		basic.BasicTest.printListNode(l);
 		System.exit(0);
 	}
@@ -81,4 +81,37 @@ public class Merge2SortedList {
 		return node;
 	}
 
+	public static ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+		if (l1 == null && l2 == null) {
+			return null;
+		}
+		ListNode pHead = null;
+		if (l1 != null && l2 != null) {
+			if (l1.val > l2.val) {
+				pHead = l2;
+				l2 = l2.next;
+			} else {
+				pHead = l1;
+				l1 = l1.next;
+			}
+		}
+		ListNode tmpNode = pHead;
+		while (l1 != null && l2 != null) {
+			if (l1.val > l2.val) {
+				tmpNode.next = l2;
+				l2 = l2.next;
+			} else {
+				tmpNode.next = l1;
+				l1 = l1.next;
+			}
+			tmpNode = tmpNode.next;
+		}
+		if (l1 != null) {
+			tmpNode.next = l1;
+		}
+		if (l2 != null) {
+			tmpNode.next = l2;
+		}
+		return pHead;
+	}
 }

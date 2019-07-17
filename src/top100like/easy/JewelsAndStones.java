@@ -12,6 +12,22 @@ package top100like.easy;
 public class JewelsAndStones {
 
 	public static void main(String[] args) {
+		String j = "aA";
+		String s = "aAAbbbb";
+		int num = process(j, s);
+	}
+
+	private static int process(String j, String s) {
+		if (j == null || j.isEmpty()) {
+			return 0;
+		}
+		int jewel = 0;
+//		for (int i = 0; i < arr.length; i++) {
+//			Object object = arr[i];
+//			
+//		}
+		Integer.max(jewel, jewel);
 		
+		return jewel;
 	}
 }

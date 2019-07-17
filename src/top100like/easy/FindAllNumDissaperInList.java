@@ -14,20 +14,20 @@ import java.util.List;
  */
 public class FindAllNumDissaperInList {
 
-    public static void main(String[] args) {
-        int[] inputList = new int[]{1, 4};
-        List<Integer> list = proccess(inputList);
-        System.out.println("list: " + list);
-    }
+	public static void main(String[] args) {
+		int[] inputList = new int[]{1, 4};
+		List<Integer> list = proccess(inputList);
+		System.out.println("list: " + list);
+	}
 
-    private static List<Integer> proccess(int[] inputList) {
-        List<Integer> list = new ArrayList<>();
-        for (int i = 1; i <= inputList.length; i++) {
-            list.add(i);
-        }
-        for (int i = 0; i < inputList.length; i++) {
-            list.remove((Integer) inputList[i]);
-        }
-        return list;
-    }
+	private static List<Integer> proccess(int[] inputList) {
+		List<Integer> list = new ArrayList<>();
+		for (int i = 1; i <= inputList.length; i++) {
+			list.add(i);
+		}
+		for (int i = 0; i < inputList.length; i++) {
+			list.remove((Integer) inputList[i]);
+		}
+		return list;
+	}
 }

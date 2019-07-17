@@ -1,4 +1,4 @@
-	/*
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -20,8 +20,36 @@ public class Anagrams {
 	public static void main(String[] args) {
 		String s = "cbaebabacd";
 		String p = "abc";
-		List<Integer> output = process(s, p);
+		List<Integer> output = process2(s, p);
 		System.out.println("output: " + output);
+	}
+
+	private static List<Integer> process2(String s, String p) {
+		if (s.length() < p.length()) {
+			return new ArrayList<>();
+		}
+		List<Integer> answer = new ArrayList<>();
+		int size = p.length();
+		int[] target = new int[26];
+		for (int i = 0; i < size; i++) {
+			target[p.charAt(i) - 'a']++;
+		}
+		char[] arr = s.toCharArray();
+		int l = 0, r = 0;
+		while (r < arr.length) {
+			if (target[arr[r] - 'a'] > 0) {
+				target[arr[r] - 'a']--;
+				r++;
+			} else {
+				target[arr[l] - 'a']++;
+				l++;
+			}
+
+			if (r - l == size) {
+				answer.add(l);
+			}
+		}
+		return answer;
 	}
 
 	private static List<Integer> process(String s, String p) {
@@ -81,6 +109,40 @@ public class Anagrams {
 		}
 		for (Character charItem : map1.keySet()) {
 			if (!Objects.equals(map1.get(charItem), map2.get(charItem))) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	private static List<Integer> process1(String s, String p) {
+		List<Integer> result = new ArrayList<>();
+		if (s.length() < p.length()) {
+			return result;
+		}
+		int[] pData = new int[26];
+		for (int i = 0; i < p.length(); i++) {
+			pData[p.charAt(i) - 'a']++;
+		}
+		for (int i = 0; i < p.length(); i++) {
+			pData[s.charAt(i) - 'a']--;
+		}
+		if (isAnagram(pData)) {
+			result.add(0);
+		}
+		for (int i = p.length(); i < s.length(); i++) {
+			pData[s.charAt(i) - 'a']--;
+			pData[s.charAt(i - p.length()) - 'a']++;
+			if (isAnagram(pData)) {
+				result.add(i - p.length() + 1);
+			}
+		}
+		return result;
+	}
+
+	private static boolean isAnagram(int[] data) {
+		for (int i = 0; i < data.length; i++) {
+			if (data[i] != 0) {
 				return false;
 			}
 		}

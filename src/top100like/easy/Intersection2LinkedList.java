@@ -142,11 +142,22 @@ class Intersection2LinkedList {
 	public static ListNode process6(ListNode nodeA, ListNode nodeB) {
 		ListNode headA = nodeA;
 		ListNode headB = nodeB;
+		int i = 0;
 		while (nodeA != nodeB) {
+			System.out.println(++i);
 			nodeA = nodeA.next != null ? nodeA.next : headB;
 			nodeB = nodeB.next != null ? nodeB.next : headA;
 		}
 		return nodeA;
+	}
+
+	public static ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+		ListNode pA = headA, pB = headB;
+		while (pA != pB) {
+			pA = pA != null ? pA.next : headB;
+			pB = pB != null ? pB.next : headA;
+		}
+		return (pA == pB && pA != null) ? pA : null;
 	}
 
 	public static void main(String[] args) {
@@ -159,13 +170,13 @@ class Intersection2LinkedList {
 		ListNode h = new ListNode(7);
 		ListNode k = new ListNode(8);
 		a.next = b;
-		b.next = c;
-		g.next = h;
-		h.next = k;
-		k.next = c;
+		b.next = e;
+		e.next = g;
 		c.next = d;
 		d.next = e;
-		ListNode ret = process6(a, g);
+//		c.next = d;
+//		d.next = e;
+		ListNode ret = getIntersectionNode(a, c);
 		System.out.println("ret: " + ret.val);
 	}
 
