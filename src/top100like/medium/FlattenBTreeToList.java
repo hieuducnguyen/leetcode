@@ -27,11 +27,11 @@ public class FlattenBTreeToList {
 		node1.right = node3;
 		node2.left = node4;
 		node2.right = node5;
-		node3.right = node6;
-		node4.right = node7;
-		node5.left = node8;
+//		node3.right = node6;
+//		node4.right = node7;
+//		node5.left = node8;
 
-		process(node1);
+		flatten(node1);
 		String printTree = basic.TreeTest.printTree(node1);
 		System.out.println(printTree);
 	}
@@ -59,6 +59,23 @@ public class FlattenBTreeToList {
 			return getLastRightNode(right);
 		} else {
 			return lastRight;
+		}
+	}
+
+	public static void flatten(TreeNode root) {
+		if (root != null) {
+			flatten(root.left);
+			flatten(root.right);
+			if (root.left != null) {
+				TreeNode tmpRight = root.right;
+				root.right = root.left;
+				root.left = null;
+				TreeNode node = root.right;
+				while (node.right != null) {
+					node = node.right;
+				}
+				node.right = tmpRight;
+			}
 		}
 	}
 }

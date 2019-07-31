@@ -14,10 +14,11 @@ import basic.TreeTest.TreeNode;
 public class ConstructBTreeFromPreAndIn {
 
 	public static void main(String[] args) {
-		int[] preorder = new int[]{3, 2, 1, 4};
-		int[] inorder = new int[]{1, 2, 3, 4};
-		TreeNode node = process(preorder, inorder);
-		String printTree = basic.TreeTest.printTree(node);
+		int[] inorder = {4, 2, 1, 7, 5, 8, 3, 6};
+		int[] preorder = {1, 2, 4, 3, 5, 7, 8, 6};
+
+		TreeNode root = process1(inorder, preorder);
+		String printTree = basic.TreeTest.printTree(root);
 		System.out.println(printTree);
 	}
 
@@ -51,6 +52,31 @@ public class ConstructBTreeFromPreAndIn {
 				break;
 			}
 		}
+		return node;
+	}
+
+	private static TreeNode process1(int[] inorder, int[] preorder) {
+		if (inorder == null || inorder.length == 0 || preorder == null || preorder.length == 0) {
+			return null;
+		}
+		TreeNode node = construct(preorder, 0, preorder.length, inorder, 0, inorder.length);
+		return node;
+	}
+
+	private static TreeNode construct(int[] preorder, int preStart, int preEnd, int[] inorder, int inStart, int inEnd) {
+		if (preStart >= preEnd || inStart >= inEnd) {
+			return null;
+		}
+		TreeNode node = new TreeNode(preorder[preStart]);
+		int k = 0;
+		for (int i = inStart; i < inEnd; i++) {
+			if (inorder[i] == node.val) {
+				k = i;
+				break;
+			}
+		}
+		node.left = construct(preorder, preStart + 1, preStart + 1 + k - inStart, inorder, inStart, k);
+		node.right = construct(preorder, preStart + 1 + k - inStart, preEnd, inorder, k + 1, inEnd);
 		return node;
 	}
 }
