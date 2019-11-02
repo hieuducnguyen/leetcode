@@ -18,7 +18,7 @@ public class ConstructBTreeFromPreAndIn {
 		int[] preorder = {1, 2, 4, 3, 5, 7, 8, 6};
 
 		TreeNode root = process1(inorder, preorder);
-		String printTree = basic.TreeTest.printTree(root);
+		String printTree = basic.TreeTest.toString(root);
 		System.out.println(printTree);
 	}
 

@@ -32,7 +32,7 @@ public class FlattenBTreeToList {
 //		node5.left = node8;
 
 		flatten(node1);
-		String printTree = basic.TreeTest.printTree(node1);
+		String printTree = basic.TreeTest.toString(node1);
 		System.out.println(printTree);
 	}
 

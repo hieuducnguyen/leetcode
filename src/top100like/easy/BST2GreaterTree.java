@@ -17,24 +17,24 @@ public class BST2GreaterTree {
 	static int sum = 0;
 
 	public static void main(String[] args) {
-		TreeNode node1 = new TreeNode(2);
-		TreeNode node2 = new TreeNode(1);
+		TreeNode node1 = new TreeNode(1);
+		TreeNode node2 = new TreeNode(0);
 		TreeNode node3 = new TreeNode(4);
 		TreeNode node4 = new TreeNode(-2);
 		TreeNode node5 = new TreeNode(3);
 //		TreeNode node6 = new TreeNode(9);
-		TreeNode node7 = new TreeNode(3);
-		TreeNode node8 = new TreeNode(5);
+//		TreeNode node7 = new TreeNode(3);
+//		TreeNode node8 = new TreeNode(5);
 
 		node1.left = node2;
-//		node1.right = node3;
-//		node2.left = node4;
-//		node3.left = node5;
+		node1.right = node3;
+		node2.left = node4;
+		node3.left = node5;
 //		node3.right = node6;
 //		node4.right = node7;
 //		node5.left = node8;
-		TreeNode node = convertBST3(node1);
-		String printTree = basic.TreeTest.printTree(node);
+		TreeNode node = convertBST5(node1);
+		String printTree = basic.TreeTest.toString(node);
 		System.out.println(printTree);
 	}
 
@@ -147,5 +147,22 @@ public class BST2GreaterTree {
 			tmpNode = travelNode.left;
 		}
 		return node;
+	}
+
+	static TreeNode convertBST5(TreeNode node) {
+		convertBST(node, 0);
+		return node;
+	}
+
+	public static int convertBST(TreeNode node, int greater) {
+		if (node == null) {
+			return 0;
+		}
+		int rightVal = convertBST(node.right, greater);
+		node.val += Math.max(rightVal, greater);
+
+		greater = node.val;
+		int left = convertBST(node.left, greater);
+		return Math.max(node.val ,left);
 	}
 }

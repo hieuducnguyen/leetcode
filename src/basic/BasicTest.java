@@ -24,6 +24,13 @@ public class BasicTest {
 		System.out.println();
 	}
 
+	public static void printArray(char[] a) {
+		for (int i = 0; i < a.length; i++) {
+			System.out.print(i + ":" + a[i] + " | ");
+		}
+		System.out.println();
+	}
+
 	public static void printArray(double[] a) {
 		for (int i = 0; i < a.length; i++) {
 			System.out.print(i + ":" + a[i] + " | ");
@@ -186,7 +193,22 @@ public class BasicTest {
 		}
 	}
 
+	public static void printListNode(Node list) {
+		System.out.print("list: ");
+		while (list != null) {
+			System.out.print(list.toString() + ", ");
+			list = list.next;
+		}
+	}
+
 	public static void printMatrix(int[][] matrix) {
+		int m = matrix.length;
+		for (int i = 0; i < m; i++) {
+			printArray(matrix[i]);
+		}
+	}
+
+	public static void printMatrix(char[][] matrix) {
 		int m = matrix.length;
 		for (int i = 0; i < m; i++) {
 			printArray(matrix[i]);

@@ -29,12 +29,20 @@ public class TreeTest {
 	}
 	public static String printTemplate = "{(%s):left(%s)right(%s)}";
 
-	public static String printTree(TreeNode node) {
+	public static String toString(TreeNode node) {
 		if (node != null) {
-			return String.format(printTemplate, node.val, printTree(node.left), printTree(node.right));
+			return String.format(printTemplate, node.val, toString(node.left), toString(node.right));
 		} else {
 			return "null";
 		}
+	}
+
+	public static void printTree(TreeNode node) {
+		String tree = "null";
+		if (node != null) {
+			tree = String.format(printTemplate, node.val, toString(node.left), toString(node.right));
+		}
+		System.out.println("tree: " + tree);
 	}
 
 //	public static void main(String[] args) {

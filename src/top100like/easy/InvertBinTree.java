@@ -28,7 +28,7 @@ public class InvertBinTree {
 		node1.right = node3;
 		node2.left = node4;
 		TreeNode node = process(node1);
-		String printTree = TreeTest.printTree(node);
+		String printTree = TreeTest.toString(node);
 		System.out.println(printTree);
 	}
 

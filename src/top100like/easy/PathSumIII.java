@@ -4,9 +4,11 @@
  */
 package top100like.easy;
 
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Stack;
+import basic.TreeTest.TreeNode;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -14,125 +16,58 @@ import java.util.Stack;
  */
 public class PathSumIII {
 
-	private static int process(TreeNode a, int i) {
-		if (a == null) {
-			return 0;
-		}
-		if (a.val == i) {
-			int left = process(a.left, 0);
-			int right = process(a.right, 0);
-			return 1 + left + right;
-		} else {
-			int left = process(a.left, i - a.val);
-			int right = process(a.right, i - a.val);
-			return left + right;
-		}
-	}
-
-	private static int pathSum(TreeNode root, int sum, int sum0) {
-		if (root == null) {
-			return 0;
-		}
-		if (root.val == sum) {
-			System.out.println(root);
-			return 1 + pathSum(root.left, sum0, sum0)
-				+ pathSum(root.right, sum0, sum0)
-				+ pathSum(root.left, 0, sum0)
-				+ pathSum(root.right, 0, sum0);
-		} else {
-			return pathSum(root.right, sum - root.val, sum0)
-				+ pathSum(root.left, sum - root.val, sum0)
-				+ pathSum(root.right, sum0, sum0)
-				+ pathSum(root.left, sum0, sum0);
-		}
-	}
-
-	private static class TreeNode {
-
-		int val;
-		TreeNode left;
-		TreeNode right;
-
-		TreeNode(int x) {
-			val = x;
-		}
-
-		@Override
-		public String toString() {
-			String leftValue = left != null ? String.valueOf(left.val) : "null";
-			String rightValue = right != null ? String.valueOf(right.val) : "null";
-			return String.format("val: %s right: %s left %s", val, rightValue, leftValue);
-		}
-
-	}
+	static PathSumIII INSTANCE = new PathSumIII();
 
 	public static void main(String[] args) {
-		TreeNode a = new TreeNode(1);
-		TreeNode b = new TreeNode(2);
-		TreeNode c = new TreeNode(3);
-		TreeNode d = new TreeNode(4);
-		TreeNode e = new TreeNode(5);
-		TreeNode f = new TreeNode(11);
-		TreeNode g = new TreeNode(3);
-		TreeNode h = new TreeNode(-2);
-		TreeNode k = new TreeNode(1);
-		TreeNode l = new TreeNode(11);
-//		a.left = b;
-		a.right = b;
-//		b.left = d;
-		b.right = c;
-//		d.left = g;
-		c.right = d;
-		d.right = e;
-//		c.right = f;
-//		f.right = l;
-		int numPath = pathSum(a, 3);
-		System.out.println("numPath: " + numPath);
+		TreeNode node1 = new TreeNode(-2);
+		TreeNode node2 = new TreeNode(0);
+		TreeNode node3 = new TreeNode(4);
+		TreeNode node4 = new TreeNode(2);
+		TreeNode node5 = new TreeNode(3);
+		TreeNode node6 = new TreeNode(9);
+		TreeNode node7 = new TreeNode(3);
+		TreeNode node8 = new TreeNode(5);
+
+		node1.left = node2;
+		node1.right = node3;
+		node2.left = node4;
+//		node3.left = node5;
+//		node3.right = node6;
+//		node4.right = node7;
+//		node5.left = node8;
+		INSTANCE.pathSum(node1, 0);
 	}
 
-	private static int preProcess(TreeNode a, int sum) {
-		Queue<TreeNode> queue = new LinkedList<>();
-		queue.add(a);
-		int numPath = 0;
-		while (!queue.isEmpty()) {
-			TreeNode node = queue.poll();
-			if (node != null) {
-				queue.add(node.left);
-				queue.add(node.right);
-			}
-			numPath += process(node, sum);
-		}
-		return numPath;
+	public int pathSum(TreeNode node, int sum) {
+		Map<TreeNode, List<Integer>> map = new HashMap<>();
+		TreeNode parent = null;
+		int pathSum = pathSum(parent, node, sum, map);
+		System.out.println("pathSum: " + pathSum);
+		return pathSum;
 	}
 
-	private static int countPath(TreeNode node, int sum) {
+	private int pathSum(TreeNode parent, TreeNode node, int sum, Map<TreeNode, List<Integer>> map) {
 		if (node == null) {
 			return 0;
 		}
-		if (node.val == sum) {
-			return 1 + countPath(node.left, 0)
-				+ countPath(node.right, 0);
-		} else {
-			return countPath(node.left, sum - node.val)
-				+ countPath(node.right, sum - node.val);
-		}
-	}
-
-	private static int pathSum(TreeNode root, int sum) {
-		if (root == null) {
-			return 0;
-		}
-		Stack<TreeNode> stack = new Stack<>();
-		stack.add(root);
+		List<Integer> parentPath = map.getOrDefault(parent, new ArrayList<>());
 		int numPath = 0;
-		while (!stack.isEmpty()) {
-			TreeNode tmpNode = stack.pop();
-			if (tmpNode != null) {
-				numPath += countPath(tmpNode, sum);
-				stack.add(tmpNode.left);
-				stack.add(tmpNode.right);
+		List<Integer> nodePath = new ArrayList<>();
+		for (int i = 0; i < parentPath.size(); i++) {
+			int path = parentPath.get(i) + node.val;
+			nodePath.add(path);
+			if (path == sum) {
+				numPath++;
 			}
 		}
-		return numPath;
+		nodePath.add(node.val);
+		if (node.val == sum) {
+			numPath++;
+		}
+		map.put(node, nodePath);
+		int numPathLeft = pathSum(node, node.left, sum, map);
+		int numPathRight = pathSum(node, node.right, sum, map);
+		map.remove(node);
+		return numPath + numPathLeft + numPathRight;
 	}
 }
