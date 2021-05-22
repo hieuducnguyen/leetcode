@@ -7,6 +7,8 @@ public class _1351_CountNegativeNumbersInASortedMatrix {
 		if (grid == null || grid.length == 0) {
 			return 0;
 		}
+		//test 5
+		//test 6
 		int i = 0, j = grid[0].length - 1, temp, result = 0;
 		while (i < grid.length && j >= 0) {
 			temp = grid[i][j];
