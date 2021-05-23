@@ -10,11 +10,14 @@ package top100inteview.easy;
  * @author hieund3
  */
 public class BestTimeToBuyAndSellStockII {
+	// pick 7
 
 	public static void main(String[] args) {
 		int[] prices = {7, 1, 5, 3, 6, 4};
 		int maxProfit = maxProfit(prices);
-		// new line test chery pick
+		// pick 6
+
+		// PICK 8
 	}
 
 	private static int maxProfit(int[] prices) {
