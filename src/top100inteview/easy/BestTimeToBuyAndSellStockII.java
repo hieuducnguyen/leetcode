@@ -14,8 +14,7 @@ public class BestTimeToBuyAndSellStockII {
 	public static void main(String[] args) {
 		int[] prices = {7, 1, 5, 3, 6, 4};
 		int maxProfit = maxProfit(prices);
-		System.out.println("maxProfix: " + maxProfit);
-
+		// new line test chery pick
 	}
 
 	private static int maxProfit(int[] prices) {
