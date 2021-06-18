@@ -25,6 +25,7 @@ public class _278_FirstBadVersion {
 		return (int) l;
 	}
 
+	//test 2
 	private boolean isBadVersion(int i) {
 		return i >= badVersion;
 	}
