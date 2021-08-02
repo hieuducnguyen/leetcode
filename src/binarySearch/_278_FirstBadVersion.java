@@ -4,7 +4,6 @@ package binarySearch;
  * Created by hieund3 on 17/06/2021
  */
 public class _278_FirstBadVersion {
-	//test 1
 	int badVersion;
 
 	public _278_FirstBadVersion(int badVersion) {

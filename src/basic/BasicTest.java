@@ -5,11 +5,11 @@ package basic;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
  * @author hieund3
  */
 public class BasicTest {
@@ -176,6 +176,11 @@ public class BasicTest {
 
 		public ListNode(int x) {
 			val = x;
+		}
+
+		ListNode(int val, ListNode next) {
+			this.val = val;
+			this.next = next;
 		}
 
 		@Override
